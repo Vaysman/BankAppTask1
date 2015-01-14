@@ -22,6 +22,8 @@ public class SavingAccount implements Account{
 
     @Override
     public void withdraw(float amount) {
-        balance -= amount;
+        if(balance >= amount) {
+            balance -= amount;
+        }
     }
 }
