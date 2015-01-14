@@ -1,2 +1,9 @@
 /.gradle/
 /build/
+/.settings/
+*.iws
+*.iml
+*.ipr
+.classpath
+.project
+
