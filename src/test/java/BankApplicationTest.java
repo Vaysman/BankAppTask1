@@ -4,7 +4,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.hamcrest.Matchers.containsInAnyOrder;
+import static org.hamcrest.CoreMatchers.hasItems;
 import static org.junit.Assert.assertThat;
 
 public class BankApplicationTest {
@@ -17,6 +17,7 @@ public class BankApplicationTest {
             names.add(method.getName());
         }
 
-        assertThat(names, containsInAnyOrder("initialize", "printBankReport", "modifyBank"));
+        assertThat(names, hasItems("initialize", "printBankReport", "modifyBank"));
+        //containsInAnyOrder("initialize", "printBankReport", "modifyBank")
     }
 }

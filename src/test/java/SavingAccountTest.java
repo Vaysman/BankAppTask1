@@ -1,9 +1,8 @@
 import org.junit.Test;
 
-import java.util.Arrays;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 public class SavingAccountTest {
 
@@ -17,21 +16,21 @@ public class SavingAccountTest {
         Account account = new SavingAccount(ZERO_EURO);
 
         account.deposit(ONE_EURO);
-        assertThat((double) account.getBalance(), closeTo(ONE_EURO, ERROR_DELTA));
+        assertEquals(account.getBalance(), ONE_EURO, ERROR_DELTA);
     }
 
     @Test
     public void testGetBalance() throws Exception {
         Account account = new SavingAccount(ONE_EURO);
 
-        assertThat((double) account.getBalance(), closeTo(ONE_EURO, ERROR_DELTA));
+        assertEquals(account.getBalance(), ONE_EURO, ERROR_DELTA);
     }
 
     @Test
     public void testGetReport() throws Exception {
         Account account = new SavingAccount(ONE_EURO);
 
-        assertThat(account.getReport(), stringContainsInOrder(Arrays.asList("Saving", "1.0")));
+        assertThat(account.getReport(), allOf(containsString("Saving"), containsString("1.0")));
     }
 
     @Test
@@ -40,7 +39,7 @@ public class SavingAccountTest {
 
         account.withdraw(ONE_EURO);
 
-        assertThat((double) account.getBalance(), is(closeTo(ZERO_EURO, ERROR_DELTA)));
+        assertEquals(account.getBalance(), ZERO_EURO, ERROR_DELTA);
     }
 
     @Test
@@ -49,7 +48,7 @@ public class SavingAccountTest {
 
         account.withdraw(TWO_EURO);
 
-        assertThat((double) account.getBalance(), is(closeTo(ONE_EURO, ERROR_DELTA)));
+        assertEquals(account.getBalance(), ONE_EURO, ERROR_DELTA);
     }
 
     @Test

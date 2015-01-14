@@ -1,9 +1,8 @@
 import org.junit.Test;
 
-import java.util.Arrays;
 import java.util.List;
 
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -44,7 +43,7 @@ public class ClientTest {
         List<Account> accounts = client.getAccounts();
 
         assertThat(accounts.size(), is(1));
-        assertThat(accounts, contains(account));
+        assertThat(accounts, hasItem(account));
     }
 
 
@@ -66,6 +65,6 @@ public class ClientTest {
 
         client.addAccount(account);
 
-        assertThat(client.getReport(), stringContainsInOrder(Arrays.asList(NAME, "Saving", "1.0")));
+        assertThat(client.getReport(), allOf(containsString(NAME), containsString("Saving"), containsString("1.0")));
     }
 }

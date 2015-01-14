@@ -2,7 +2,7 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -35,7 +35,7 @@ public class BankTest {
         List<Client> clients = bank.getClients();
 
         assertThat(clients.size(), is(1));
-        assertThat(clients, contains(client));
+        assertThat(clients, hasItem(client));
     }
 
     @Test

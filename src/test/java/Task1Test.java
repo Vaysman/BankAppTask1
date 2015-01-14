@@ -36,7 +36,7 @@ public class Task1Test {
         try {
             clazz = Class.forName(name);
         } catch (ClassNotFoundException ex) {
-            fail("Interface "+ name + " not found");
+            fail("Interface " + name + " not found");
         }
 
         return clazz;
