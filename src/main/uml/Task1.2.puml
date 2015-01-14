@@ -1,0 +1,57 @@
+@startuml
+skinparam shadowing false
+
+title Bank Application
+
+class BankApplication
+
+class Client {
+  -String name
+  -List<Account> accounts
+  -Account activeAccount
+  -float initialOverdraft
+  +Client()
+  +Client(float initialOverdraft)
+  +void setActiveAccount(Account account)
+}
+
+interface Report {
+  +String getReport()
+}
+
+class Bank {
+  -List<Client> clients
+  +List<Client> getClients()
+}
+
+interface Account {
+  +float getBalance()
+  +void deposit(float amount)
+  +void withdraw(float amount)
+}
+
+abstract class AbstractAccount {
+  #float balance
+  +float getBalance()
+  +void deposit(float amount)
+}
+
+class SavingAccount
+
+class CheckingAccount {
+  -float overdraft
+  +void setOverdraft()
+}
+
+
+Client "1" *-- "*" Account
+Client "*" --* "1" Bank
+Report  <|-- Account
+Account <|.. AbstractAccount
+AbstractAccount <|-- SavingAccount
+AbstractAccount <|-- CheckingAccount
+Report <|.. Bank
+BankApplication -- Bank
+
+
+@enduml
