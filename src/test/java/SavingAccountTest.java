@@ -51,4 +51,12 @@ public class SavingAccountTest {
 
         assertThat((double) account.getBalance(), is(closeTo(ONE_EURO, ERROR_DELTA)));
     }
+
+    @Test
+    public void shouldImplementsAccount() throws Exception {
+        SavingAccount account = new SavingAccount(ONE_EURO);
+
+        assertThat(account, instanceOf(Account.class));
+    }
+
 }
