@@ -1,3 +1,9 @@
+package com.luxoft.bankapp.model;
+
+import com.luxoft.bankapp.model.Account;
+import com.luxoft.bankapp.model.Client;
+import com.luxoft.bankapp.model.Report;
+import com.luxoft.bankapp.model.SavingAccount;
 import org.junit.Test;
 
 import java.util.List;

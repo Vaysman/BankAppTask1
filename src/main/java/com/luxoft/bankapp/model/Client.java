@@ -1,3 +1,7 @@
+package com.luxoft.bankapp.model;
+
+import com.luxoft.bankapp.model.Account;
+
 import java.util.ArrayList;
 import java.util.List;
 
