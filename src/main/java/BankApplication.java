@@ -3,11 +3,11 @@ public class BankApplication {
 
     }
 
-    public static void printBankReport() {
+    public static void modifyBank() {
 
     }
 
-    public static void modifyBank() {
+    public static void printBankReport() {
 
     }
 }

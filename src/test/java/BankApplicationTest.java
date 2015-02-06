@@ -18,6 +18,5 @@ public class BankApplicationTest {
         }
 
         assertThat(names, hasItems("initialize", "printBankReport", "modifyBank"));
-        //containsInAnyOrder("initialize", "printBankReport", "modifyBank")
     }
 }

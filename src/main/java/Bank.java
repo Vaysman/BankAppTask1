@@ -21,7 +21,7 @@ public class Bank implements Report {
     public String getReport() {
         StringBuilder report = new StringBuilder();
         report.append("Bank report").append(System.lineSeparator());
-        for(Client client: clients) {
+        for (Client client : clients) {
             report.append(client.getReport()).append(System.lineSeparator());
         }
         return report.toString();

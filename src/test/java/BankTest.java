@@ -11,22 +11,6 @@ public class BankTest {
     public static final String NAME = "name";
 
     @Test
-    public void shouldImplementsReport() throws Exception {
-        Bank bank = new Bank();
-
-        assertThat(bank, instanceOf(Report.class));
-    }
-
-    @Test
-    public void getClientsTest() throws Exception {
-        Bank bank = new Bank();
-
-        List<Client> clients = bank.getClients();
-
-        assertThat(clients, is(notNullValue()));
-    }
-
-    @Test
     public void addClientTest() throws Exception {
         Bank bank = new Bank();
         Client client = new Client(NAME);
@@ -36,6 +20,15 @@ public class BankTest {
 
         assertThat(clients.size(), is(1));
         assertThat(clients, hasItem(client));
+    }
+
+    @Test
+    public void getClientsTest() throws Exception {
+        Bank bank = new Bank();
+
+        List<Client> clients = bank.getClients();
+
+        assertThat(clients, is(notNullValue()));
     }
 
     @Test
@@ -52,9 +45,17 @@ public class BankTest {
     @Test
     public void getReportTest() throws Exception {
         Bank bank = new Bank();
+
         Client client = new Client(NAME);
         bank.addClient(client);
 
         assertThat(bank.getReport(), containsString(NAME));
+    }
+
+    @Test
+    public void shouldImplementsReport() throws Exception {
+        Bank bank = new Bank();
+
+        assertThat(bank, instanceOf(Report.class));
     }
 }

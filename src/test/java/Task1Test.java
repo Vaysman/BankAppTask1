@@ -20,16 +20,6 @@ public class Task1Test {
         testMethodWithOneParam(methods, "void", "withdraw", "float");
     }
 
-    @Test
-    public void reportTest() throws Exception {
-        Class clazz = getInterface("Report");
-
-        Method[] methods = clazz.getDeclaredMethods();
-        assertThat("\"String getReport()\" method not found in Report", methods.length, is(1));
-
-        testMethodWithoutParams(methods, "java.lang.String", "getReport");
-    }
-
     private Class getInterface(String name) {
         Class clazz = null;
 
@@ -72,5 +62,15 @@ public class Task1Test {
         assertThat(failMessage, method, is(notNullValue()));
 
         return method;
+    }
+
+    @Test
+    public void reportTest() throws Exception {
+        Class clazz = getInterface("Report");
+
+        Method[] methods = clazz.getDeclaredMethods();
+        assertThat("\"String getReport()\" method not found in Report", methods.length, is(1));
+
+        testMethodWithoutParams(methods, "java.lang.String", "getReport");
     }
 }

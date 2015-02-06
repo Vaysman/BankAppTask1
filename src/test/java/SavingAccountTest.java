@@ -6,10 +6,17 @@ import static org.junit.Assert.assertThat;
 
 public class SavingAccountTest {
 
+    public static final float ERROR_DELTA = 0.00001f;
     public static final float ONE_EURO = 1.0f;
     public static final float TWO_EURO = 2.0f;
     public static final float ZERO_EURO = 0.0f;
-    public static final float ERROR_DELTA = 0.00001f;
+
+    @Test
+    public void shouldImplementsAccount() throws Exception {
+        SavingAccount account = new SavingAccount(ONE_EURO);
+
+        assertThat(account, instanceOf(Account.class));
+    }
 
     @Test
     public void testDeposit() throws Exception {
@@ -49,13 +56,6 @@ public class SavingAccountTest {
         account.withdraw(TWO_EURO);
 
         assertEquals(account.getBalance(), ONE_EURO, ERROR_DELTA);
-    }
-
-    @Test
-    public void shouldImplementsAccount() throws Exception {
-        SavingAccount account = new SavingAccount(ONE_EURO);
-
-        assertThat(account, instanceOf(Account.class));
     }
 
 }

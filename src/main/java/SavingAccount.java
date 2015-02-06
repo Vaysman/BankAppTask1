@@ -1,13 +1,8 @@
-public class SavingAccount implements Account{
+public class SavingAccount implements Account {
     private float balance;
 
     public SavingAccount(float initialBalance) {
         balance = initialBalance;
-    }
-
-    @Override
-    public float getBalance() {
-        return balance;
     }
 
     @Override
@@ -16,14 +11,19 @@ public class SavingAccount implements Account{
     }
 
     @Override
-    public String getReport() {
-        return "Saving Account: " + balance;
+    public float getBalance() {
+        return balance;
     }
 
     @Override
     public void withdraw(float amount) {
-        if(balance >= amount) {
+        if (balance >= amount) {
             balance -= amount;
         }
+    }
+
+    @Override
+    public String getReport() {
+        return "Saving Account: " + balance;
     }
 }

@@ -27,7 +27,7 @@ public class Client implements Report {
     public String getReport() {
         StringBuilder report = new StringBuilder();
         report.append("Client: ").append(name).append(System.lineSeparator());
-        for(Account account: accounts) {
+        for (Account account : accounts) {
             report.append(account.getReport()).append(System.lineSeparator());
         }
         return report.toString();

@@ -12,17 +12,15 @@ public class ClientTest {
     public static final String NAME = "name";
 
     @Test
-    public void getNameTest() throws Exception {
+    public void addAccountsTest() throws Exception {
         Client client = new Client(NAME);
+        Account account = new SavingAccount(0.0f);
+        client.addAccount(account);
 
-        assertThat(client.getName(), is(NAME));
-    }
+        List<Account> accounts = client.getAccounts();
 
-    @Test
-    public void shouldImplementsReport() throws Exception {
-        Client client = new Client(NAME);
-
-        assertThat(client, instanceOf(Report.class));
+        assertThat(accounts.size(), is(1));
+        assertThat(accounts, hasItem(account));
     }
 
     @Test
@@ -35,17 +33,11 @@ public class ClientTest {
     }
 
     @Test
-    public void addAccountsTest() throws Exception {
+    public void getNameTest() throws Exception {
         Client client = new Client(NAME);
-        Account account = new SavingAccount(0.0f);
-        client.addAccount(account);
 
-        List<Account> accounts = client.getAccounts();
-
-        assertThat(accounts.size(), is(1));
-        assertThat(accounts, hasItem(account));
+        assertThat(client.getName(), is(NAME));
     }
-
 
     @Test
     public void getReportCallsGetReportFromAccountTest() throws Exception {
@@ -66,5 +58,12 @@ public class ClientTest {
         client.addAccount(account);
 
         assertThat(client.getReport(), allOf(containsString(NAME), containsString("Saving"), containsString("1.0")));
+    }
+
+    @Test
+    public void shouldImplementsReport() throws Exception {
+        Client client = new Client(NAME);
+
+        assertThat(client, instanceOf(Report.class));
     }
 }
