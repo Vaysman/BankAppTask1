@@ -28,6 +28,19 @@ public class BankTest {
     }
 
     @Test
+    public void removeClientTest() throws Exception {
+        Bank bank = new Bank();
+        Client client = new Client(NAME);
+        bank.addClient(client);
+
+        bank.removeClient(client);
+        List<Client> clients = bank.getClients();
+
+        assertThat(clients.size(), is(0));
+        assertThat(clients, not(hasItem(client)));
+    }
+
+    @Test
     public void getClientsTest() throws Exception {
         Bank bank = new Bank();
 

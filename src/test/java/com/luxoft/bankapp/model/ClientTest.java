@@ -30,6 +30,19 @@ public class ClientTest {
     }
 
     @Test
+    public void setGetActiveAccountsTest() throws Exception {
+        Client client = new Client(NAME);
+        Account account = new SavingAccount(0.0f);
+        client.addAccount(account);
+
+        client.setActiveAccount(account);
+        Account actual = client.getActiveAccount();
+
+        assertThat(account, is(actual));
+    }
+
+
+    @Test
     public void getAccountsTest() throws Exception {
         Client client = new Client(NAME);
 

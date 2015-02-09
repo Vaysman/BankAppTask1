@@ -15,6 +15,10 @@ public class Bank implements Report {
         clients.add(client);
     }
 
+    public void removeClient(Client client) {
+        clients.remove(client);
+    }
+
     public List<Client> getClients() {
         return clients;
     }

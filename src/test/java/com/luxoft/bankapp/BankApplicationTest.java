@@ -1,3 +1,6 @@
+package com.luxoft.bankapp;
+
+import com.luxoft.bankapp.BankApplication;
 import org.junit.Test;
 
 import java.lang.reflect.Method;

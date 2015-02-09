@@ -3,55 +3,64 @@ skinparam shadowing false
 
 title Bank Application
 
-class BankApplication
+package com.luxoft.bankapp.service {
+    interface BankService {
+        +void addClient(Bank bank,Client client)
+        +void removeClient(Bank bank,Client client)
+        +void addAccount(Client client, Account account)
+        +void setActiveAccount(Client client, Account account)
+    }
 
-class Client {
-  -String name
-  -List<Account> accounts
-  -Account activeAccount
-  -float initialOverdraft
-  +Client()
-  +Client(float initialOverdraft)
-  +void setActiveAccount(Account account)
+    class BankServiceImpl
+
+    BankService <|.. BankServiceImpl
 }
 
-interface Report {
-  +String getReport()
+package com.luxoft.bankapp {
+    class BankApplication
 }
 
-class Bank {
-  -List<Client> clients
-  +List<Client> getClients()
-}
+package com.luxoft.bankapp.model {
+    class Client {
+      -String name
+      -List<Account> accounts
+      +Client()
+      +void addAccount(Account account)
+      +List<Account> getAccounts()
+    }
 
-interface Account {
-  +float getBalance()
-  +void deposit(float amount)
-  +void withdraw(float amount)
-}
+    interface Report {
+      +String getReport()
+    }
 
-abstract class AbstractAccount {
-  #float balance
-  +float getBalance()
-  +void deposit(float amount)
-}
+    class Bank {
+      -List<Client> clients
+      +void addClient(Client client)
+      +List<Client> getClients()
+    }
 
-class SavingAccount
+    interface Account {
+      +float getBalance()
+      +void deposit(float amount)
+      +void withdraw(float amount)
+    }
 
-class CheckingAccount {
-  -float overdraft
-  +void setOverdraft()
+    class SavingAccount {
+      -float balance
+    }
 }
 
 
 Client "1" *-- "*" Account
 Client "*" --* "1" Bank
 Report  <|-- Account
-Account <|.. AbstractAccount
-AbstractAccount <|-- SavingAccount
-AbstractAccount <|-- CheckingAccount
+Account <|.. SavingAccount
 Report <|.. Bank
+
 BankApplication -- Bank
 
+Bank <.. BankServiceImpl
+Client <.. BankServiceImpl
+Account <.. BankServiceImpl
 
 @enduml

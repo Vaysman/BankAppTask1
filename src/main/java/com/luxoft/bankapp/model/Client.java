@@ -8,6 +8,7 @@ import java.util.List;
 public class Client implements Report {
 
     private List<Account> accounts;
+    private Account activeAccount;
     private String name;
 
     public Client(String name) {
@@ -23,6 +24,10 @@ public class Client implements Report {
         return accounts;
     }
 
+    public Account getActiveAccount() {
+        return activeAccount;
+    }
+
     public String getName() {
         return name;
     }
@@ -35,5 +40,13 @@ public class Client implements Report {
             report.append(account.getReport()).append(System.lineSeparator());
         }
         return report.toString();
+    }
+
+    public void setActiveAccount(Account account) {
+        if (!accounts.contains(account)) {
+            addAccount(account);
+        }
+
+        activeAccount = account;
     }
 }
