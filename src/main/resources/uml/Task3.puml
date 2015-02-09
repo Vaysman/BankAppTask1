@@ -1,0 +1,58 @@
+@startuml
+skinparam shadowing false
+
+title Bank Application
+
+package com.luxoft.bankapp.model {
+    class Client {
+      -String name
+      -List<Account> accounts
+      +Client()
+      +void addAccount(Account account)
+      +List<Account> getAccounts()
+    }
+
+    interface Report {
+      +String getReport()
+    }
+
+    class Bank {
+      -List<Client> clients
+      +void addClient(Client client)
+      +List<Client> getClients()
+    }
+
+    interface Account {
+      +float getBalance()
+      +void deposit(float amount)
+      +void withdraw(float amount)
+    }
+
+    abstract class AbstractAccount {
+      #float balance
+      +float getBalance()
+      +void deposit(float amount)
+      +void withdraw(float amount)
+    }
+
+    class SavingAccount {
+      +String getReport()
+    }
+
+    class CheckingAccount {
+      +String getReport()
+      +void withdraw(float amount)
+    }
+
+}
+
+
+Client "1" *-- "*" Account
+Client "*" --* "1" Bank
+Report  <|-- Account
+Account <|.. AbstractAccount
+AbstractAccount <|-- SavingAccount
+AbstractAccount <|-- CheckingAccount
+Report <|.. Bank
+
+@enduml
