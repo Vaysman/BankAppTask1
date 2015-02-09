@@ -1,9 +1,5 @@
 package com.luxoft.bankapp.model;
 
-import com.luxoft.bankapp.model.Account;
-import com.luxoft.bankapp.model.Client;
-import com.luxoft.bankapp.model.Report;
-import com.luxoft.bankapp.model.SavingAccount;
 import org.junit.Test;
 
 import java.util.List;
@@ -41,6 +37,17 @@ public class ClientTest {
         assertThat(account, is(actual));
     }
 
+    @Test
+    public void setGetGenderTest() throws Exception {
+        Client client = new Client(NAME);
+        Gender gender = Gender.MALE;
+
+        client.setGender(gender);
+
+        Gender actual = client.getGender();
+
+        assertThat(gender, is(actual));
+    }
 
     @Test
     public void getAccountsTest() throws Exception {
@@ -77,6 +84,14 @@ public class ClientTest {
         client.addAccount(account);
 
         assertThat(client.getReport(), allOf(containsString(NAME), containsString("Saving"), containsString("1.0")));
+    }
+
+    @Test
+    public void getReportGenderPrefixTest() throws Exception {
+        Client client = new Client(NAME);
+        client.setGender(Gender.FEMALE);
+
+        assertThat(client.getReport(), containsString("Ms."));
     }
 
     @Test

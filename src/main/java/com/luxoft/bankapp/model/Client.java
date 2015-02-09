@@ -10,6 +10,7 @@ public class Client implements Report {
     private List<Account> accounts;
     private Account activeAccount;
     private String name;
+    private Gender gender;
 
     public Client(String name) {
         accounts = new ArrayList<>();
@@ -35,7 +36,11 @@ public class Client implements Report {
     @Override
     public String getReport() {
         StringBuilder report = new StringBuilder();
-        report.append("Client: ").append(name).append(System.lineSeparator());
+        report.append("Client: ");
+        if(gender != null) {
+            report.append(gender.getPrefix()).append(" ");
+        }
+        report.append(name).append(System.lineSeparator());
         for (Account account : accounts) {
             report.append(account.getReport()).append(System.lineSeparator());
         }
@@ -48,5 +53,13 @@ public class Client implements Report {
         }
 
         activeAccount = account;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public Gender getGender() {
+        return gender;
     }
 }
